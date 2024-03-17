@@ -63,6 +63,7 @@ services:
       retries: 120
 
   es01:
+    restart: always
     depends_on:
       setup:
         condition: service_healthy
@@ -106,6 +107,7 @@ services:
       retries: 120
 
   es02:
+    restart: always
     depends_on:
       - es01
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -145,6 +147,7 @@ services:
       retries: 120
 
   es03:
+    restart: always
     depends_on:
       - es02
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -184,6 +187,7 @@ services:
       retries: 120
 
   kibana:
+    restart: always
     depends_on:
       es01:
         condition: service_healthy
